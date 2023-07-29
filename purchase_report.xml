@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="blog_purchase_report_document" inherit_id="purchase.report_purchaseorder_document">
+        <xpath expr="//p[@t-field='o.notes']" position="attributes">
+                <attribute name="style">font-size: 12px;</attribute>
+        </xpath>
+        <xpath expr="//th[@name='th_description']" position="attributes">
+                <attribute name="style">width: 150px;</attribute>
+        </xpath>
+        <xpath expr="//td[@id='product']" position="attributes">
+                <attribute name="style">width: 150px;</attribute>
+        </xpath>
+        <xpath expr="//th[@name='th_date_req']" position="replace">
+                <th name="th_date_req" class="text-center"><strong>Delivery Date</strong></th>
+        </xpath>
+        <xpath expr="//span[@t-field='line.price_unit']" position="attributes">
+                <attribute name="t-options">{"widget": "monetary", "display_currency": o.currency_id}</attribute>
+        </xpath>
+        <xpath expr="//p[@t-field='o.date_order']" position="replace">
+            <p t-esc="str(o.date_order)[:10]" class="m-0"/>
+        </xpath>
+        <xpath expr="//span[@t-field='line.date_planned']" position="replace">
+            <span t-esc="str(line.date_planned)[:10]" />
+        </xpath>
+        <xpath expr="//table[hasclass('o_main_table')]" position="before">
+                    <br />
+        </xpath>
+        <xpath expr="//table[hasclass('o_main_table')]" position="attributes">
+                    <attribute name="style">font-size: 12px;</attribute>
+        </xpath>
+        <xpath expr="//div[@id='total']" position="attributes">
+                    <attribute name="style">font-size: 12px;</attribute>
+        </xpath>
+      </template>
+
+</odoo>
